@@ -1,0 +1,123 @@
+body{
+  padding: 0;
+  margin: 0;
+}
+
+.divNavBar{
+  height: 5vh;
+}
+.cardContainer{
+  padding-bottom: 40px;
+}
+
+
+.titre{
+  text-align: center;
+  margin-bottom: 50px;
+  border: 1px solid #083b4c;
+  color: white;
+  background-color: #083b4c;
+}
+
+.card-body{
+  color: #083b4c;
+}
+
+label{
+  color: #083b4c;
+}
+.form-control{
+  color: #083b4c;
+}
+.navbar{
+  background-color: gray;
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgb(255 255 255);
+}
+
+
+a{
+  color: white;
+}
+.text-center{
+  background-color: gray;
+  color: white;
+}
+.alertPopup{
+  height: 7vh;
+  position: absolute;
+  top: 150px;
+  right: 50px;
+}
+
+.connexion{
+  margin: auto;
+}
+
+.logoTemplate{
+  width: 190px;
+  position: absolute;
+  top: 90px;
+  left: 15px;
+}
+.btmCard{
+  position: absolute;
+  bottom: 12px;
+}
+
+.blockContent{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px 10px 2px;
+  padding-bottom: 25px;
+}
+.googleMap{
+  /*background-color: black;*/
+  color: white;
+}
+.blockMembre{
+  margin: auto;
+}
+.colorWhite{
+  color: white;
+  opacity: 100%;
+}
+.sizeUp{
+  font-size: 1.1em;
+  font-style: oblique;
+}
+.form-label{
+  color:white;
+}
+.blockActivite{
+  display: block;
+  width: 800px;
+  margin: auto;
+}
+.blockLogin{
+  margin: auto;
+}
+
+form{
+  margin: auto;
+  margin-bottom: 150px;
+}
+.mainPos{
+  margin: 100px 0 250px 0;
+  height: 80vh;
+}
+
+.mainFlex{
+  display: flex;
+  padding-left: 0;
+  height: 80vh;
+}
+
+.divFooter{
+  margin-top: 5px;
+  height: 5vh;
+}
+
