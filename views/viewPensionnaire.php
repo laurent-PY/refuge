@@ -4,6 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $this->_t = 'Ajouter un nouveau pensionnaire';
+
+
+
 if(isset($_POST['enregistrer'])) {
     $newPensionnaire = new Pensionnaire();
     $newPensionnaire->setNom($_POST['nom']);
@@ -13,7 +16,10 @@ if(isset($_POST['enregistrer'])) {
     $newPensionnaire->setDateEntree($_POST['dateEntree']);
     $newPensionnaire->setDateSortie($_POST['dateSortie']);
     $newPensionnaire->setDescription($_POST['description']);
-    $newPensionnaire->setUrlPhoto($_POST['urlPhoto']);
+    //TODO attention à modifier, en cours (les deux lignes du dessous) !!
+    $target_dir = "../asset/pensionnaires/";
+    $newPensionnaire->setUrlPhoto($target_file = $target_dir . basename($_FILES["urlPhoto"]["name"]));
+    //        $newPensionnaire->setUrlPhoto($_FILES["urlPhoto"]['name']);
     $newPensionnaire->setIdMembre($_SESSION['idMembre']);
     $newPensionnaire->setIdSante($_POST['idSante']);
     $newPensionnaire->setIdEnclos($_POST['idEnclos']);
@@ -27,7 +33,7 @@ if(isset($_POST['enregistrer'])) {
     <div class="titre">
         <h1>Ajouter un pensionnaire</h1>
     </div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
         <!-- nom input -->
         <div class="form-outline mb4 ">
@@ -77,27 +83,34 @@ if(isset($_POST['enregistrer'])) {
 
         <!-- date d'entree input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="pass">Date d'entrée au refuge *</label>
+            <label class="form-label" for="dateEntree">Date d'entrée au refuge *</label>
             <input type="date" name="dateEntree" class="form-control" value="<?php if (isset($_POST['dateEntree'])){echo $_POST['dateEntree'];} ?>"/>
         </div>
 
         <!-- date de sortie input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="pass">Date de sortie du refuge *</label>
+            <label class="form-label" for="dateSortie">Date de sortie du refuge *</label>
             <input type="date" name="dateSortie" class="form-control" value="<?php if (isset($_POST['dateSortie'])){echo $_POST['dateSortie'];} ?>"/>
         </div>
 
         <!-- description input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="urlZoom"></label>
+            <label class="form-label" for="description"></label>
             <textarea class="form-control" name="description" rows="3" value="<?php if (isset($_POST['description'])){echo $_POST['description'];} ?>" placeholder="Description de l'animal"></textarea>
         </div>
 
-        <!-- UrlPhoto Temporaire input -->
+        <!-- essaie ajout de fichier à uploader -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="pass"></label>
-            <input type="text" name="urlPhoto" class="form-control" value="<?php if (isset($_POST['urlPhoto'])){echo $_POST['urlPhoto'];} ?>" placeholder="Télécharger une image *"/>
+            <label class="form-label" for="urlPhoto"></label>
+            <input type="file" name="urlPhoto" class="form-control"/>
         </div>
+
+
+        <!-- UrlPhoto Temporaire input -->
+<!--        <div class="form-outline mb-4">-->
+<!--            <label class="form-label" for="pass"></label>-->
+<!--            <input type="text" name="urlPhoto" class="form-control" value="--><?php //if (isset($_POST['urlPhoto'])){echo $_POST['urlPhoto'];} ?><!--" placeholder="Télécharger une image *"/>-->
+<!--        </div>-->
 
         <!-- Submit button -->
         <input type="submit" class="btn btn-secondary btn-block" name="enregistrer" value="Enregistrer">

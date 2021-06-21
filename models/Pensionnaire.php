@@ -52,9 +52,6 @@ class Pensionnaire
     public function getIdMembre(){return $this->_idMembre;}
     public function setIdMembre($idMembre): void{$this->_idMembre = $idMembre;}
 
-    public function getIdRace(){return $this->_idRace;}
-    public function setIdRace($idRace): void{$this->_idRace = $idRace;}
-
     public function getIdSante(){return $this->_idSante;}
     public function setIdSante($idSante): void{$this->_idSante = $idSante;}
 

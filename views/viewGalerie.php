@@ -20,9 +20,9 @@ if(isset($_POST['consulter'])){
     </div>
     <div class="blockContent">
         <?php
-        // Je récupère tout les pensionnaire de la table pensionnaire
+        // Je récupère tout les pensionnaires de la table pensionnaire
         $pensionnaires = AccueilManager::getAccueil();
-        // un foreach me permet de boucler sur tout les pensionnaire et de faire une card pour chacun d'entre-eux dans la variable $pensionnaire toutes les infos d'un pensionnaire sont réunis
+        // un foreach me permet de boucler sur tout les pensionnaire et de faire une carde pour chacun d'entre-eux dans la variable $pensionnaire toutes les infos d'un pensionnaire sont réunis
         foreach($pensionnaires as $pensionnaire): ?>
             <div class="blockContent">
                 <div class="row">
@@ -39,7 +39,7 @@ if(isset($_POST['consulter'])){
                             ?><p>Description : <br><?php $pensionnaire['description'] = substr($pensionnaire['description'], 0, 30);
                                 echo $pensionnaire['description']."(...)";?></p><?php
                             ?>
-                            <!--j'utilise la methode strtotime afin d'inverser le sens des dates, vu que mysql ne me l'envoi pas au bon formatge-->
+                            <!--j'utilise la methode strtotime afin d'inverser le sens des dates, vu que mysql ne me l'envoi pas au bon formatage-->
                             <p class="card-text">Date d'entrée : <?php $timeStamp = strtotime($pensionnaire['dateEntree']); $dateUTC = date("d-m-Y", $timeStamp); echo $dateUTC?></p>
                             <p class="card-text">Date de sortie : <?php $timeStamp = strtotime($pensionnaire['dateSortie']); $dateUTC = date("d-m-Y", $timeStamp); echo $dateUTC?></p>
                             <form method="post">
