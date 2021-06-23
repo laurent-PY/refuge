@@ -9,8 +9,8 @@ if(isset($_POST['consulter'])){
     // Je met dans la variable global $_SESSION l'id du pensionnaire
     $_SESSION['idPensionnaire'] = $_POST['id'];
     // et je met aussi le numéro de l'enclos dans la variable global $_SESSION pour y avoir accès dans la vue détail.
-    $_SESSION['idEnclos'] = GalerieManager::getEnclos($_POST['id']);
-    // Je redirige vers l'accueil sans conecter l'utilisateur
+    $_SESSION['idEnclos'] = DetailManager::enclos($_POST['id']);
+    // Je redirige vers l'accueil sans connecter l'utilisateur
     header("location:detail");
 }
 ?>
@@ -45,7 +45,6 @@ if(isset($_POST['consulter'])){
                             <form method="post">
                                 <!--un input de type 'hidden' me permet de récupérer l'id du pensionnaire que je vais stocker dans la variable de $_SESSION ainsi je peux m'en servir lors de l'affichage détails-->
                                 <input name="id" type="hidden" value="<?= $pensionnaire['idPensionnaire']; ?>">
-                                <input type="hidden" value="">
                                 <input class="btmCard btn btn-outline-secondary" name="consulter" type="submit" value="Consulter">
                             </form>
                         </div>

@@ -4,9 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 $this->_t = 'Ajouter un nouveau pensionnaire';
-
-
-
 if(isset($_POST['enregistrer'])) {
     $newPensionnaire = new Pensionnaire();
     $newPensionnaire->setNom($_POST['nom']);
@@ -16,10 +13,7 @@ if(isset($_POST['enregistrer'])) {
     $newPensionnaire->setDateEntree($_POST['dateEntree']);
     $newPensionnaire->setDateSortie($_POST['dateSortie']);
     $newPensionnaire->setDescription($_POST['description']);
-    //TODO attention à modifier, en cours (les deux lignes du dessous) !!
-    $target_dir = "../asset/pensionnaires/";
-    $newPensionnaire->setUrlPhoto($target_file = $target_dir . basename($_FILES["urlPhoto"]["name"]));
-    //        $newPensionnaire->setUrlPhoto($_FILES["urlPhoto"]['name']);
+    $newPensionnaire->setUrlPhoto($_POST['urlPhoto']);
     $newPensionnaire->setIdMembre($_SESSION['idMembre']);
     $newPensionnaire->setIdSante($_POST['idSante']);
     $newPensionnaire->setIdEnclos($_POST['idEnclos']);
@@ -99,18 +93,12 @@ if(isset($_POST['enregistrer'])) {
             <textarea class="form-control" name="description" rows="3" value="<?php if (isset($_POST['description'])){echo $_POST['description'];} ?>" placeholder="Description de l'animal"></textarea>
         </div>
 
-        <!-- essaie ajout de fichier à uploader -->
+
+        <!--UrlPhoto Temporaire input -->
         <div class="form-outline mb-4">
-            <label class="form-label" for="urlPhoto"></label>
-            <input type="file" name="urlPhoto" class="form-control"/>
+            <label class="form-label" for="pass"></label>
+            <input type="text" name="urlPhoto" class="form-control" value="<?php if (isset($_POST['urlPhoto'])){echo $_POST['urlPhoto'];} ?>" placeholder="Télécharger une image *"/>
         </div>
-
-
-        <!-- UrlPhoto Temporaire input -->
-<!--        <div class="form-outline mb-4">-->
-<!--            <label class="form-label" for="pass"></label>-->
-<!--            <input type="text" name="urlPhoto" class="form-control" value="--><?php //if (isset($_POST['urlPhoto'])){echo $_POST['urlPhoto'];} ?><!--" placeholder="Télécharger une image *"/>-->
-<!--        </div>-->
 
         <!-- Submit button -->
         <input type="submit" class="btn btn-secondary btn-block" name="enregistrer" value="Enregistrer">
